@@ -50,3 +50,13 @@ README.md   项目说明
 ```
 
 实现说明见 [docs/architecture.md](docs/architecture.md)，图标设计资料见 [docs/icon-design.md](docs/icon-design.md)。
+
+## 发布
+
+运行以下命令完成测试、清单校验并生成 Chrome Web Store ZIP：
+
+```bash
+npm run release:prepare
+```
+
+发布包输出到 `dist/paste-and-go-at-right-<version>.zip`。完整流程和商店资料见 [docs/publishing/chrome-web-store.md](docs/publishing/chrome-web-store.md)。

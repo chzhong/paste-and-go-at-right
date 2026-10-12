@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="280" viewBox="0 0 440 280">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#075fe9"/>
+      <stop offset="1" stop-color="#02b8b4"/>
+    </linearGradient>
+  </defs>
+  <rect width="440" height="280" fill="url(#background)"/>
+  <circle cx="92" cy="140" r="65" fill="#ffffff" fill-opacity="0.14"/>
+  <image href="../src/icons/icon-128.png" x="36" y="84" width="112" height="112"/>
+  <text x="176" y="116" fill="#ffffff" font-family="Arial, sans-serif" font-size="27" font-weight="700">Paste and Go</text>
+  <text x="176" y="151" fill="#ffffff" font-family="Arial, sans-serif" font-size="27" font-weight="700">at Right</text>
+  <text x="177" y="184" fill="#e6fffe" font-family="Arial, sans-serif" font-size="15">Clipboard URL, one right-click away</text>
+</svg>

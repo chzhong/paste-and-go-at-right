@@ -3,6 +3,9 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "validate": "node scripts/validate-extension.cjs",
+    "package": "bash scripts/package-extension.sh",
+    "release:prepare": "npm test && npm run validate && npm run package"
   }
 }
