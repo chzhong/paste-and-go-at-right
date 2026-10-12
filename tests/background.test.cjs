@@ -27,6 +27,9 @@ test("service worker registers using Chrome-supported events", () => {
       },
       onClicked: event()
     },
+    i18n: {
+      getMessage: () => ""
+    },
     offscreen: {
       createDocument: async () => {}
     },

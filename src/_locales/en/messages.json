@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "Paste and Go at Right"
+  },
+  "extensionDescription": {
+    "message": "Open a clipboard URL in a new tab to the right or in Chrome Split View. All processing stays on your device."
+  },
+  "menuOpenRight": {
+    "message": "Paste and open in new tab to the right"
+  },
+  "menuOpenSplit": {
+    "message": "Paste and open in Split View"
+  }
+}

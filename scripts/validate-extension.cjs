@@ -26,7 +26,11 @@ function pngDimensions(file) {
 
 check(manifest.manifest_version === 3, "必须使用 Manifest V3");
 check(manifest.version === packageJson.version, "manifest 与 package 版本不一致");
-check(manifest.description.length <= 132, "manifest description 超过 132 字符");
+check(manifest.default_locale === "en", "默认语言必须为 en");
+check(
+  manifest.description === "__MSG_extensionDescription__",
+  "manifest description 必须使用本地化消息"
+);
 check(
   manifest.background?.service_worker === "background.js",
   "Service Worker 配置缺失"
@@ -53,6 +57,24 @@ for (const size of [16, 32, 48, 128]) {
 
 for (const file of ["background.js", "offscreen.html", "offscreen.js", "url-utils.js"]) {
   check(fs.existsSync(path.join(source, file)), `缺少运行文件：${file}`);
+}
+
+for (const locale of ["en", "zh_CN"]) {
+  const messagesPath = path.join(source, "_locales", locale, "messages.json");
+  check(fs.existsSync(messagesPath), `缺少语言包：${locale}`);
+  const messages = JSON.parse(fs.readFileSync(messagesPath, "utf8"));
+  for (const key of [
+    "extensionName",
+    "extensionDescription",
+    "menuOpenRight",
+    "menuOpenSplit"
+  ]) {
+    check(messages[key]?.message, `${locale} 缺少消息：${key}`);
+  }
+  check(
+    messages.extensionDescription.message.length <= 132,
+    `${locale} extensionDescription 超过 132 字符`
+  );
 }
 
 console.log(`Extension ${manifest.version}: validation passed`);

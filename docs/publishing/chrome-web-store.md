@@ -1,11 +1,12 @@
 # Chrome Web Store 发布方法
 
+简体中文 · [English](chrome-web-store.en.md)
+
 ## 1. 发布前准备
 
 - 注册 Chrome Web Store 开发者账号并完成一次性注册流程。
 - 为 Google 账号启用两步验证。
-- 准备可公开访问的隐私政策 URL；可将 `docs/privacy-policy.md` 发布到项目网站或 GitHub Pages。
-- 将隐私政策里的联系方式占位文字替换为真实联系渠道。
+- 使用公开隐私政策 URL：`https://chzhong.github.io/paste-and-go-at-right/privacy.html`。
 - 在 Chrome 中从 `src/` 加载扩展，完成真实场景回归测试。
 
 ## 2. 生成上传包

@@ -1,5 +1,7 @@
 # 架构说明
 
+简体中文 · [English](architecture.en.md)
+
 ## 运行组件
 
 - `src/background.js`：Manifest V3 Service Worker，维护标签页右键菜单并创建新标签页。

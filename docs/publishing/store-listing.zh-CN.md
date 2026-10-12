@@ -1,5 +1,7 @@
 # Chrome Web Store 商店文案（简体中文）
 
+简体中文 · [English](store-listing.en.md)
+
 ## 名称
 
 Paste and Go at Right

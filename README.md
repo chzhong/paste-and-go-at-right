@@ -1,5 +1,9 @@
 # Paste and Go at Right
 
+简体中文 · [English](README.en.md)
+
+[项目主页](https://chzhong.github.io/paste-and-go-at-right/) · [隐私政策](https://chzhong.github.io/paste-and-go-at-right/privacy.html)
+
 一个轻量的 Chrome 扩展：右键点击标签页时，如果剪贴板里是 `http://` 或 `https://` URL，就显示打开菜单；否则不显示。
 
 ## 安装
@@ -49,7 +53,7 @@ docs/       架构、设计资料与不随扩展发布的参考素材
 README.md   项目说明
 ```
 
-实现说明见 [docs/architecture.md](docs/architecture.md)，图标设计资料见 [docs/icon-design.md](docs/icon-design.md)。
+实现说明见 [docs/architecture.md](docs/architecture.md)，图标设计资料见 [docs/icon-design.md](docs/icon-design.md)，GitHub Pages 维护方法见 [docs/github-pages.md](docs/github-pages.md)。扩展的名称、简介和右键菜单会根据 Chrome 语言自动显示中文或英文。
 
 ## 发布
 

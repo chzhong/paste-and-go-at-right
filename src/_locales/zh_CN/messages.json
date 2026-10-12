@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "Paste and Go at Right"
+  },
+  "extensionDescription": {
+    "message": "从标签页右键菜单，在右侧标签页或 Chrome 拆分视图中打开剪贴板网址。所有处理均在本机完成。"
+  },
+  "menuOpenRight": {
+    "message": "在右侧新增标签页并打开"
+  },
+  "menuOpenSplit": {
+    "message": "在拆分视图粘贴并打开"
+  }
+}

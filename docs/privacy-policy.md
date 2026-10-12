@@ -1,5 +1,7 @@
 # Paste and Go at Right 隐私政策
 
+简体中文 · [English](privacy-policy.en.md)
+
 最后更新：2026 年 10 月 12 日
 
 Paste and Go at Right（以下简称“本扩展”）的单一用途，是让用户从 Chrome 标签页右键菜单快速打开剪贴板中的网址。
@@ -39,6 +41,6 @@ Paste and Go at Right（以下简称“本扩展”）的单一用途，是让�
 
 ## 联系方式
 
-发布前请将此段替换为发布者可公开联系的邮箱或支持网址。
+如有隐私或支持问题，请通过 [GitHub Issues](https://github.com/chzhong/paste-and-go-at-right/issues) 联系项目维护者。请勿在公开 Issue 中提交剪贴板内容或其他敏感信息。
 
-> 本文档是基于当前扩展行为准备的发布模板，不构成法律意见。发布者应根据所在地法律和实际发布信息完成最终审核。
+> 本文档基于当前扩展行为编写，不构成法律意见。

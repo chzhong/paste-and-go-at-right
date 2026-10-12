@@ -7,6 +7,10 @@ const OFFSCREEN_DOCUMENT = "offscreen.html";
 let creatingOffscreenDocument = null;
 let menuShouldExist = false;
 
+function message(name, fallback) {
+  return chrome.i18n.getMessage(name) || fallback;
+}
+
 function supportsSplitView() {
   return typeof chrome.tabs.createSplit === "function";
 }
@@ -20,7 +24,7 @@ function showMenus() {
   chrome.contextMenus.create(
     {
       id: MENU_OPEN_RIGHT,
-      title: "在右侧新增标签页并打开",
+      title: message("menuOpenRight", "Paste and open in new tab to the right"),
       contexts: ["tab"]
     },
     () => chrome.runtime.lastError
@@ -30,7 +34,7 @@ function showMenus() {
     chrome.contextMenus.create(
       {
         id: MENU_OPEN_SPLIT,
-        title: "在拆分视图粘贴并打开",
+        title: message("menuOpenSplit", "Paste and open in Split View"),
         contexts: ["tab"]
       },
       () => chrome.runtime.lastError

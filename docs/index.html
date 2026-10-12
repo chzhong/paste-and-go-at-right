@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" data-language="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Open clipboard URLs in a new Chrome tab to the right or in native Split View. All processing stays on your device.">
+    <meta name="theme-color" content="#0869ed">
+    <meta property="og:title" content="Paste and Go at Right">
+    <meta property="og:description" content="A focused Chrome extension for opening clipboard URLs exactly where you need them.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/icon-source.png">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="assets/site.css">
+    <title data-page-title-en="Paste and Go at Right — Chrome Extension" data-page-title-zh="Paste and Go at Right — Chrome 扩展">Paste and Go at Right — Chrome Extension</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      <span data-lang="en">Skip to content</span>
+      <span data-lang="zh">跳到主要内容</span>
+    </a>
+
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Paste and Go at Right home">
+        <img src="assets/icon-128.png" width="38" height="38" alt="">
+        <span>Paste and Go at Right</span>
+      </a>
+      <div class="header-actions">
+        <a class="github-link" href="https://github.com/chzhong/paste-and-go-at-right">GitHub</a>
+        <div class="language-switcher" aria-label="Language / 语言">
+          <button type="button" data-language-button="en" aria-pressed="true">EN</button>
+          <button type="button" data-language-button="zh" aria-pressed="false">中</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="site-main">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span data-lang="en">A focused Chrome extension</span>
+            <span data-lang="zh">专注而轻巧的 Chrome 扩展</span>
+          </p>
+          <h1>
+            <span data-lang="en">Paste a URL.<br><span>Open it right.</span></span>
+            <span data-lang="zh">复制网址，<br><span>在右侧打开。</span></span>
+          </h1>
+          <p>
+            <span data-lang="en">Right-click a tab to open the clipboard URL immediately to its right—or place both pages side by side in Chrome Split View.</span>
+            <span data-lang="zh">右键点击标签页，即可在它右侧打开剪贴板网址；也可以使用 Chrome 原生拆分视图，让两个页面并排显示。</span>
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="https://github.com/chzhong/paste-and-go-at-right">
+              <span data-lang="en">View source on GitHub</span>
+              <span data-lang="zh">在 GitHub 查看源码</span>
+            </a>
+            <a class="button" href="#install">
+              <span data-lang="en">Install for development</span>
+              <span data-lang="zh">开发者模式安装</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="browser-demo" aria-label="Illustration of the extension menu">
+          <div class="browser-window">
+            <div class="tab-strip">
+              <span class="traffic-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="tab active"><img src="assets/icon-128.png" alt="">Paste and Go</div>
+              <div class="tab">Example</div>
+            </div>
+            <div class="address-row"><div class="address-bar">example.com</div></div>
+            <div class="page-canvas">
+              <div class="clipboard-pill">⌘C&nbsp; https://example.com/</div>
+              <div class="context-menu">
+                <div class="menu-item highlight">
+                  <img src="assets/icon-128.png" alt="">
+                  <span data-lang="en">Paste and open in new tab to the right</span>
+                  <span data-lang="zh">在右侧新增标签页并打开</span>
+                </div>
+                <div class="menu-item">
+                  <span aria-hidden="true">◫</span>
+                  <span data-lang="en">Paste and open in Split View</span>
+                  <span data-lang="zh">在拆分视图粘贴并打开</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works">
+        <div class="section-heading">
+          <h2>
+            <span data-lang="en">Three steps.<br>No detour.</span>
+            <span data-lang="zh">三步完成，<br>没有绕路。</span>
+          </h2>
+          <p>
+            <span data-lang="en">The extension stays out of the way until your clipboard contains a complete HTTP or HTTPS URL.</span>
+            <span data-lang="zh">只有当剪贴板包含完整的 HTTP 或 HTTPS 网址时，扩展菜单才会出现。</span>
+          </p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-number">1</div>
+            <h3><span data-lang="en">Copy a URL</span><span data-lang="zh">复制网址</span></h3>
+            <p><span data-lang="en">Copy one complete HTTP or HTTPS address from any app.</span><span data-lang="zh">从任意应用复制一个完整的 HTTP 或 HTTPS 地址。</span></p>
+          </article>
+          <article class="card">
+            <div class="card-number">2</div>
+            <h3><span data-lang="en">Right-click a tab</span><span data-lang="zh">右键点击标签页</span></h3>
+            <p><span data-lang="en">The action appears in Chrome's native tab context menu only when it is useful.</span><span data-lang="zh">仅在剪贴板是网址时，操作才会出现在 Chrome 原生标签页菜单中。</span></p>
+          </article>
+          <article class="card">
+            <div class="card-number">3</div>
+            <h3><span data-lang="en">Choose the layout</span><span data-lang="zh">选择打开方式</span></h3>
+            <p><span data-lang="en">Open a tab immediately to the right, or use native Split View on Chrome 155+.</span><span data-lang="zh">在右侧打开新标签页，或在 Chrome 155+ 中使用原生拆分视图。</span></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="privacy">
+        <div class="privacy-band">
+          <div>
+            <p class="eyebrow"><span data-lang="en">Privacy by design</span><span data-lang="zh">隐私优先设计</span></p>
+            <h2><span data-lang="en">Your clipboard stays yours.</span><span data-lang="zh">剪贴板始终属于你。</span></h2>
+            <p><span data-lang="en">Clipboard text is checked temporarily on your device. Nothing is uploaded, stored, logged, sold, or shared.</span><span data-lang="zh">剪贴板文本只在设备本地临时检查，不上传、不保存、不记录、不出售，也不分享。</span></p>
+            <a class="button" href="privacy.html"><span data-lang="en">Read the privacy policy</span><span data-lang="zh">阅读隐私政策</span></a>
+          </div>
+          <ul class="privacy-list">
+            <li><span data-lang="en">No accounts or sign-in</span><span data-lang="zh">无需账号或登录</span></li>
+            <li><span data-lang="en">No telemetry or analytics</span><span data-lang="zh">没有遥测或分析服务</span></li>
+            <li><span data-lang="en">No advertising or tracking</span><span data-lang="zh">没有广告或追踪</span></li>
+            <li><span data-lang="en">No remote code or backend</span><span data-lang="zh">没有远程代码或后端服务</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="install">
+        <div class="section-heading">
+          <h2><span data-lang="en">Load it locally.</span><span data-lang="zh">本地加载使用。</span></h2>
+          <div>
+            <p><span data-lang="en">Until the Chrome Web Store listing is available, clone the repository and load the <code>src/</code> directory as an unpacked extension.</span><span data-lang="zh">Chrome Web Store 上架前，可以克隆仓库，并将 <code>src/</code> 目录作为未打包扩展加载。</span></p>
+            <ol>
+              <li><span data-lang="en">Open <code>chrome://extensions/</code>.</span><span data-lang="zh">打开 <code>chrome://extensions/</code>。</span></li>
+              <li><span data-lang="en">Enable Developer mode.</span><span data-lang="zh">开启“开发者模式”。</span></li>
+              <li><span data-lang="en">Choose Load unpacked and select <code>src/</code>.</span><span data-lang="zh">点击“加载已解压的扩展程序”，选择 <code>src/</code>。</span></li>
+            </ol>
+            <div class="compatibility">
+              <span>Chrome 109+ · New tab</span>
+              <span>Chrome 155+ · Split View</span>
+              <span>Manifest V3</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Paste and Go at Right</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="privacy.html"><span data-lang="en">Privacy</span><span data-lang="zh">隐私</span></a>
+        <a href="https://github.com/chzhong/paste-and-go-at-right/issues"><span data-lang="en">Support</span><span data-lang="zh">支持</span></a>
+        <a href="https://github.com/chzhong/paste-and-go-at-right">GitHub</a>
+      </nav>
+    </footer>
+
+    <script src="assets/site.js"></script>
+  </body>
+</html>

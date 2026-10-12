@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Paste and Go at Right",
-  "version": "1.1.0",
-  "description": "从标签页右键菜单，在右侧或拆分视图中打开剪贴板里的网址。",
+  "name": "__MSG_extensionName__",
+  "version": "1.2.0",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
+  "homepage_url": "https://chzhong.github.io/paste-and-go-at-right/",
   "minimum_chrome_version": "109",
   "permissions": [
     "clipboardRead",
