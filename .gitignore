@@ -1,0 +1,76 @@
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local
+.passwd
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Operating systems
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*~
+.nfs*
+.Trash-*/
+
+# IDEs and editor state (IntelliJ, Eclipse, VS Code, Cursor, Codex)
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+.cursor/
+.codex/
+.agents/
+*.swp
+*.swo
+
+# Java / Maven / Gradle
+target/
+build/
+.gradle/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+hs_err_pid*
+replay_pid*
+
+# Node.js
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.next/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Docker and local runtime state
+docker-compose.override.yml
+compose.override.yml
+*.pid
+*.sock
+*.sql
+*.dump
+*.bak
+*.tar
+*.tar.gz
+*.mv.db
+*.trace.db
+*.sqlite
+*.sqlite3

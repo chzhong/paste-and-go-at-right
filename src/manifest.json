@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Paste and Go at Right",
+  "version": "1.1.0",
+  "description": "从标签页右键菜单，在右侧或拆分视图中打开剪贴板里的网址。",
+  "minimum_chrome_version": "109",
+  "permissions": [
+    "clipboardRead",
+    "contextMenus",
+    "offscreen"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}
