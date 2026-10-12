@@ -5,7 +5,6 @@ const MENU_OPEN_SPLIT = "paste-and-go-in-split-view";
 const OFFSCREEN_DOCUMENT = "offscreen.html";
 
 let creatingOffscreenDocument = null;
-let menuShouldExist = false;
 
 function message(name, fallback) {
   return chrome.i18n.getMessage(name) || fallback;
@@ -15,39 +14,44 @@ function supportsSplitView() {
   return typeof chrome.tabs.createSplit === "function";
 }
 
-function showMenus() {
-  if (menuShouldExist) {
-    return;
-  }
+function upsertMenu(id, title) {
+  const properties = {
+    title,
+    contexts: ["tab"]
+  };
 
-  menuShouldExist = true;
-  chrome.contextMenus.create(
-    {
-      id: MENU_OPEN_RIGHT,
-      title: message("menuOpenRight", "Paste and open in new tab to the right"),
-      contexts: ["tab"]
-    },
-    () => chrome.runtime.lastError
-  );
+  chrome.contextMenus.update(id, properties, () => {
+    if (!chrome.runtime.lastError) {
+      return;
+    }
 
-  if (supportsSplitView()) {
     chrome.contextMenus.create(
       {
-        id: MENU_OPEN_SPLIT,
-        title: message("menuOpenSplit", "Paste and open in Split View"),
-        contexts: ["tab"]
+        id,
+        ...properties
       },
       () => chrome.runtime.lastError
     );
+  });
+}
+
+function showMenus() {
+  upsertMenu(
+    MENU_OPEN_RIGHT,
+    message("menuOpenRight", "Paste and open in new tab to the right")
+  );
+
+  if (supportsSplitView()) {
+    upsertMenu(
+      MENU_OPEN_SPLIT,
+      message("menuOpenSplit", "Paste and open in Split View")
+    );
+  } else {
+    chrome.contextMenus.remove(MENU_OPEN_SPLIT, () => chrome.runtime.lastError);
   }
 }
 
 function hideMenus() {
-  if (!menuShouldExist) {
-    return;
-  }
-
-  menuShouldExist = false;
   chrome.contextMenus.removeAll(() => chrome.runtime.lastError);
 }
 
@@ -83,7 +87,6 @@ async function ensureOffscreenDocument() {
 }
 
 async function initialize() {
-  menuShouldExist = false;
   await new Promise((resolve) => {
     chrome.contextMenus.removeAll(() => {
       chrome.runtime.lastError;

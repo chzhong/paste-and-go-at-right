@@ -3,6 +3,9 @@ const test = require("node:test");
 
 test("service worker registers using Chrome-supported events", () => {
   const listeners = [];
+  const createdMenus = [];
+  const updatedMenus = [];
+  let removeAllCalls = 0;
   const event = () => ({
     addListener(listener) {
       listeners.push(listener);
@@ -16,19 +19,29 @@ test("service worker registers using Chrome-supported events", () => {
   global.clients = { matchAll: async () => [] };
   global.chrome = {
     contextMenus: {
-      create(_properties, callback) {
+      create(properties, callback) {
+        createdMenus.push(properties);
+        callback?.();
+      },
+      update(id, properties, callback) {
+        updatedMenus.push({ id, ...properties });
         callback?.();
       },
       remove(_id, callback) {
         callback?.();
       },
       removeAll(callback) {
+        removeAllCalls += 1;
         callback?.();
       },
       onClicked: event()
     },
     i18n: {
-      getMessage: () => ""
+      getMessage: (name) =>
+        ({
+          menuOpenRight: "Paste and open in new tab to the right",
+          menuOpenSplit: "Paste and open in Split View"
+        })[name] || ""
     },
     offscreen: {
       createDocument: async () => {}
@@ -48,4 +61,27 @@ test("service worker registers using Chrome-supported events", () => {
 
   assert.doesNotThrow(() => require("../src/background.js"));
   assert.equal(listeners.length, 4);
+
+  listeners[2]({
+    target: "service-worker",
+    type: "clipboard-text-changed",
+    text: "https://example.com/"
+  });
+
+  assert.deepEqual(updatedMenus, [
+    {
+      id: "paste-and-go-at-right",
+      title: "Paste and open in new tab to the right",
+      contexts: ["tab"]
+    }
+  ]);
+  assert.deepEqual(createdMenus, []);
+
+  listeners[2]({
+    target: "service-worker",
+    type: "clipboard-text-changed",
+    text: "not a URL"
+  });
+
+  assert.equal(removeAllCalls, 1);
 });
