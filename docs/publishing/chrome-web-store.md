@@ -48,6 +48,8 @@ ZIP 根目录直接包含 `manifest.json`，不会包含测试、设计参考或
 
 发布前把截图保存到 `store-assets/screenshots/` 并提交。避免截图包含个人标签页标题、账号、书签或其他敏感信息。
 
+回归测试时还应在 `chrome://extensions/shortcuts` 为右侧打开命令临时分配按键，确认它以当前活动标签页为基准工作；测试后可保留或清除该按键。
+
 ## 5. 后续版本 API 上传（可选）
 
 首次项目创建和商店资料填写建议使用 Dashboard。已有 Extension ID 后，可使用 Chrome Web Store API v2 上传更新：
@@ -79,6 +81,7 @@ scripts/cws-upload.sh --submit-staged
 - [ ] Privacy practices 与隐私政策、代码行为完全一致。
 - [ ] 隐私政策 URL 可公开访问，联系方式已填写。
 - [ ] 权限理由覆盖 `clipboardRead`、`contextMenus`、`offscreen`。
+- [ ] 可配置快捷键已在 `chrome://extensions/shortcuts` 中验证。
 - [ ] 发布账号已启用两步验证。
 - [ ] 未包含密钥、令牌、个人数据或无关文件。
 

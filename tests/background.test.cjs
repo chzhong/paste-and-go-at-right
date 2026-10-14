@@ -1,9 +1,10 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
 
-test("service worker registers using Chrome-supported events", () => {
+test("service worker registers menus and a configurable keyboard command", async () => {
   const listeners = [];
   const createdMenus = [];
+  const createdTabs = [];
   const updatedMenus = [];
   let removeAllCalls = 0;
   const event = () => ({
@@ -18,6 +19,9 @@ test("service worker registers using Chrome-supported events", () => {
   };
   global.clients = { matchAll: async () => [] };
   global.chrome = {
+    commands: {
+      onCommand: event()
+    },
     contextMenus: {
       create(properties, callback) {
         createdMenus.push(properties);
@@ -52,15 +56,18 @@ test("service worker registers using Chrome-supported events", () => {
       onInstalled: event(),
       onMessage: event(),
       onStartup: event(),
-      sendMessage: async () => ({ ok: true, text: "" })
+      sendMessage: async () => ({ ok: true, text: "https://example.com/" })
     },
     tabs: {
-      create: async () => {}
+      create: async (properties) => {
+        createdTabs.push(properties);
+      },
+      query: async () => [{ id: 7, index: 2, windowId: 1 }]
     }
   };
 
   assert.doesNotThrow(() => require("../src/background.js"));
-  assert.equal(listeners.length, 4);
+  assert.equal(listeners.length, 5);
 
   listeners[2]({
     target: "service-worker",
@@ -84,4 +91,16 @@ test("service worker registers using Chrome-supported events", () => {
   });
 
   assert.equal(removeAllCalls, 1);
+
+  listeners[3]("paste-and-open-right");
+  await new Promise((resolve) => setImmediate(resolve));
+
+  assert.deepEqual(createdTabs, [
+    {
+      url: "https://example.com/",
+      active: true,
+      windowId: 1,
+      index: 3
+    }
+  ]);
 });

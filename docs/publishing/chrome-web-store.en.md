@@ -48,6 +48,8 @@ Store screenshots must show the real user experience rather than a conceptual mo
 
 Save final screenshots under `store-assets/screenshots/` and commit them. Remove personal tab titles, accounts, bookmarks, and other sensitive information before capture.
 
+During regression testing, temporarily assign the right-side command at `chrome://extensions/shortcuts` and verify that it uses the active tab as its anchor. Keep or clear the shortcut afterward as preferred.
+
 ## 5. API upload for later releases (optional)
 
 Use the Dashboard for first-time item creation and listing details. Once the Extension has an ID, Chrome Web Store API v2 can upload updates:
@@ -79,6 +81,7 @@ Never commit OAuth client secrets, refresh tokens, access tokens, or extension s
 - [ ] Privacy practices, privacy policy, and actual behavior agree.
 - [ ] The public privacy policy URL works.
 - [ ] Permission justifications cover `clipboardRead`, `contextMenus`, and `offscreen`.
+- [ ] The configurable command has been tested through `chrome://extensions/shortcuts`.
 - [ ] Two-step verification is enabled on the publisher account.
 - [ ] No secrets, tokens, personal data, or unrelated files are included.
 

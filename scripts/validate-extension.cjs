@@ -35,6 +35,11 @@ check(
   manifest.background?.service_worker === "background.js",
   "Service Worker 配置缺失"
 );
+check(
+  manifest.commands?.["paste-and-open-right"]?.description ===
+    "__MSG_commandOpenRight__",
+  "缺少可配置的右侧打开快捷键命令"
+);
 
 const expectedPermissions = ["clipboardRead", "contextMenus", "offscreen"];
 check(
@@ -67,7 +72,8 @@ for (const locale of ["en", "zh_CN"]) {
     "extensionName",
     "extensionDescription",
     "menuOpenRight",
-    "menuOpenSplit"
+    "menuOpenSplit",
+    "commandOpenRight"
   ]) {
     check(messages[key]?.message, `${locale} 缺少消息：${key}`);
   }

@@ -2,6 +2,7 @@ importScripts("url-utils.js");
 
 const MENU_OPEN_RIGHT = "paste-and-go-at-right";
 const MENU_OPEN_SPLIT = "paste-and-go-in-split-view";
+const COMMAND_OPEN_RIGHT = "paste-and-open-right";
 const OFFSCREEN_DOCUMENT = "offscreen.html";
 
 let creatingOffscreenDocument = null;
@@ -111,6 +112,43 @@ async function readClipboardText() {
   return response?.ok ? response.text : "";
 }
 
+async function openClipboardUrl(tab, openInSplitView = false) {
+  const text = await readClipboardText();
+  const url = self.normalizeWebUrl(text);
+
+  if (!url) {
+    hideMenus();
+    return;
+  }
+
+  if (
+    openInSplitView &&
+    supportsSplitView() &&
+    typeof tab.id === "number"
+  ) {
+    await chrome.tabs.create({
+      url,
+      active: true,
+      windowId: tab.windowId,
+      splitWithTabId: tab.id
+    });
+    return;
+  }
+
+  await chrome.tabs.create({
+    url,
+    active: true,
+    windowId: tab.windowId,
+    index: tab.index + 1
+  });
+}
+
+function runOpenClipboardUrl(tab, openInSplitView = false) {
+  void openClipboardUrl(tab, openInSplitView).catch((error) => {
+    console.error("无法打开剪贴板中的网址：", error);
+  });
+}
+
 chrome.runtime.onInstalled.addListener(() => void initialize());
 chrome.runtime.onStartup.addListener(() => void initialize());
 
@@ -125,6 +163,23 @@ chrome.runtime.onMessage.addListener((message) => {
   return false;
 });
 
+chrome.commands.onCommand.addListener((command) => {
+  if (command !== COMMAND_OPEN_RIGHT) {
+    return;
+  }
+
+  void chrome.tabs
+    .query({ active: true, currentWindow: true })
+    .then(([tab]) => {
+      if (tab) {
+        return openClipboardUrl(tab);
+      }
+    })
+    .catch((error) => {
+      console.error("无法通过快捷键打开剪贴板中的网址：", error);
+    });
+});
+
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (
     (info.menuItemId !== MENU_OPEN_RIGHT &&
@@ -134,37 +189,5 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     return;
   }
 
-  void (async () => {
-    try {
-      const text = await readClipboardText();
-      const url = self.normalizeWebUrl(text);
-
-      if (!url) {
-        hideMenus();
-        return;
-      }
-
-      if (
-        info.menuItemId === MENU_OPEN_SPLIT &&
-        supportsSplitView() &&
-        typeof tab.id === "number"
-      ) {
-        await chrome.tabs.create({
-          url,
-          active: true,
-          windowId: tab.windowId,
-          splitWithTabId: tab.id
-        });
-      } else {
-        await chrome.tabs.create({
-          url,
-          active: true,
-          windowId: tab.windowId,
-          index: tab.index + 1
-        });
-      }
-    } catch (error) {
-      console.error("无法打开剪贴板中的网址：", error);
-    }
-  })();
+  runOpenClipboardUrl(tab, info.menuItemId === MENU_OPEN_SPLIT);
 });

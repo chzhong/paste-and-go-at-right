@@ -17,6 +17,7 @@ Paste and Go at Right removes repetitive steps for people who frequently copy an
 Copy a complete HTTP or HTTPS URL, then right-click any tab:
 
 - open the URL in a new tab immediately to the right;
+- assign a custom key combination for the right-side action from Chrome's extension shortcuts page;
 - on Chrome 155 and later, open it directly in native Split View;
 - when the clipboard is not a URL, keep the related menu hidden.
 
@@ -62,6 +63,7 @@ The final selections must match the Developer Dashboard's current fields and the
 2. Wait up to one second, then right-click any tab in Chrome's tab strip.
 3. Confirm that the open action appears and opens the URL in a new tab to the right.
 4. On Chrome 155+, confirm that the Split View action is available.
-5. Copy ordinary text, wait up to one second, and confirm that the menu disappears.
+5. Assign the command at `chrome://extensions/shortcuts` and confirm that it opens the URL to the right of the active tab.
+6. Copy ordinary text, wait up to one second, and confirm that the menu disappears.
 
 No account or test credentials are required.

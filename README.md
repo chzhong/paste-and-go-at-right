@@ -25,6 +25,8 @@
 
 Chrome 155 及以上版本还会提供“在拆分视图粘贴并打开”，把剪贴板网址作为被点击标签页右侧的原生拆分视图打开。Chrome 154 及以下版本尚未向扩展开放创建拆分视图的 API，因此不会显示这一项。
 
+也可以打开 `chrome://extensions/shortcuts`，为“粘贴剪贴板网址并在右侧新标签页打开”分配自定义快捷键。扩展不会预设按键，以免与 Chrome、操作系统或其他扩展的快捷键冲突。
+
 ## 图标
 
 扩展图标融合了“剪贴板”和“向右上方打开链接”两个语义，提供 16、32、48 和 128 像素 PNG；Chrome 会使用 16 像素版本作为右键菜单图标。
@@ -53,7 +55,7 @@ docs/       架构、设计资料与不随扩展发布的参考素材
 README.md   项目说明
 ```
 
-实现说明见 [docs/architecture.md](docs/architecture.md)，图标设计资料见 [docs/icon-design.md](docs/icon-design.md)，GitHub Pages 维护方法见 [docs/github-pages.md](docs/github-pages.md)。扩展的名称、简介和右键菜单会根据 Chrome 语言自动显示中文或英文。
+实现说明见 [docs/architecture.md](docs/architecture.md)，图标设计资料见 [docs/icon-design.md](docs/icon-design.md)，GitHub Pages 维护方法见 [docs/github-pages.md](docs/github-pages.md)。扩展的名称、简介、右键菜单和快捷键说明会根据 Chrome 语言自动显示中文或英文。
 
 ## 发布
 

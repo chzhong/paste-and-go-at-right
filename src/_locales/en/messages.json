@@ -10,5 +10,8 @@
   },
   "menuOpenSplit": {
     "message": "Paste and open in Split View"
+  },
+  "commandOpenRight": {
+    "message": "Paste and open the clipboard URL in a new tab to the right"
   }
 }

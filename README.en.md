@@ -25,6 +25,8 @@ The new tab is inserted immediately to the right of the tab you clicked and beco
 
 Chrome 155 and later also provide **Paste and open in Split View**, which opens the URL in Chrome's native Split View. Earlier versions do not expose the required extension API, so this action remains hidden.
 
+You can also open `chrome://extensions/shortcuts` and assign a custom shortcut to **Paste and open the clipboard URL in a new tab to the right**. The extension leaves it unassigned by default to avoid conflicts with Chrome, operating-system, or other extension shortcuts.
+
 ## Privacy
 
 Chrome does not provide a context-menu event immediately before a menu opens. To keep the action hidden for non-URLs, the extension checks the local plain-text clipboard every 500 milliseconds and updates the menu only when the content changes. It validates the clipboard again when an action is clicked.
@@ -52,7 +54,7 @@ README.md   Chinese project overview
 README.en.md English project overview
 ```
 
-See [architecture](docs/architecture.en.md), [icon design](docs/icon-design.en.md), and [GitHub Pages maintenance](docs/github-pages.en.md). The extension name, description, and context menus automatically follow Chrome's Chinese or English locale.
+See [architecture](docs/architecture.en.md), [icon design](docs/icon-design.en.md), and [GitHub Pages maintenance](docs/github-pages.en.md). The extension name, description, context menus, and command description automatically follow Chrome's Chinese or English locale.
 
 ## Release
 

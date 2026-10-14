@@ -10,5 +10,8 @@
   },
   "menuOpenSplit": {
     "message": "在拆分视图粘贴并打开"
+  },
+  "commandOpenRight": {
+    "message": "粘贴剪贴板网址并在右侧新标签页打开"
   }
 }
