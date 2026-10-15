@@ -1,7 +1,7 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
 
-test("service worker registers menus and a configurable keyboard command", async () => {
+test("service worker handles right-tab and Split View shortcuts", async () => {
   const listeners = [];
   const createdMenus = [];
   const createdTabs = [];
@@ -19,6 +19,9 @@ test("service worker registers menus and a configurable keyboard command", async
   };
   global.clients = { matchAll: async () => [] };
   global.chrome = {
+    action: {
+      onClicked: event()
+    },
     commands: {
       onCommand: event()
     },
@@ -53,6 +56,7 @@ test("service worker registers menus and a configurable keyboard command", async
     runtime: {
       getURL: (path) => `chrome-extension://test/${path}`,
       lastError: undefined,
+      openOptionsPage: async () => {},
       onInstalled: event(),
       onMessage: event(),
       onStartup: event(),
@@ -67,7 +71,7 @@ test("service worker registers menus and a configurable keyboard command", async
   };
 
   assert.doesNotThrow(() => require("../src/background.js"));
-  assert.equal(listeners.length, 5);
+  assert.equal(listeners.length, 6);
 
   listeners[2]({
     target: "service-worker",
@@ -103,4 +107,18 @@ test("service worker registers menus and a configurable keyboard command", async
       index: 3
     }
   ]);
+
+  listeners[3]("paste-and-open-split");
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.equal(createdTabs.length, 1, "unsupported Split View must not open a normal tab");
+
+  global.chrome.tabs.createSplit = async () => 1;
+  listeners[3]("paste-and-open-split");
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.deepEqual(createdTabs[1], {
+    url: "https://example.com/",
+    active: true,
+    windowId: 1,
+    splitWithTabId: 7
+  });
 });

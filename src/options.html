@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paste and Go at Right</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="settings">
+      <header>
+        <img src="icons/icon-48.png" width="48" height="48" alt="">
+        <div>
+          <p class="eyebrow">Paste and Go at Right</p>
+          <h1 data-i18n="settingsTitle"></h1>
+        </div>
+      </header>
+      <p class="intro" data-i18n="settingsIntro"></p>
+      <section class="shortcuts" aria-label="Keyboard shortcuts">
+        <div class="shortcut">
+          <div>
+            <h2 data-i18n="shortcutRight"></h2>
+          </div>
+          <kbd id="shortcut-right" aria-live="polite"></kbd>
+        </div>
+        <div class="shortcut">
+          <div>
+            <h2 data-i18n="shortcutSplit"></h2>
+            <p id="split-support" class="support" hidden data-i18n="shortcutUnavailable"></p>
+          </div>
+          <kbd id="shortcut-split" aria-live="polite"></kbd>
+        </div>
+      </section>
+      <button id="open-shortcuts" type="button" data-i18n="shortcutOpenChrome"></button>
+      <p class="note" data-i18n="shortcutChromeNote"></p>
+      <p id="error" class="error" role="status" hidden></p>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -25,7 +25,7 @@ The new tab is inserted immediately to the right of the tab you clicked and beco
 
 Chrome 155 and later also provide **Paste and open in Split View**, which opens the URL in Chrome's native Split View. Earlier versions do not expose the required extension API, so this action remains hidden.
 
-You can also open `chrome://extensions/shortcuts` and assign a custom shortcut to **Paste and open the clipboard URL in a new tab to the right**. The extension leaves it unassigned by default to avoid conflicts with Chrome, operating-system, or other extension shortcuts.
+Click the extension's toolbar icon to open its settings page. It shows the current assignments for **open in a new tab to the right** and **open in Split View**, with a link to Chrome's shortcut settings. Neither command has a preset key. The Split View shortcut can only create a split on Chrome 155 or later.
 
 ## Privacy
 

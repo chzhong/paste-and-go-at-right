@@ -13,5 +13,41 @@
   },
   "commandOpenRight": {
     "message": "粘贴剪贴板网址并在右侧新标签页打开"
+  },
+  "commandOpenSplit": {
+    "message": "粘贴剪贴板网址并在拆分视图打开"
+  },
+  "openSettings": {
+    "message": "打开 Paste and Go at Right 设置"
+  },
+  "settingsTitle": {
+    "message": "快捷键设置"
+  },
+  "settingsIntro": {
+    "message": "在 Chrome 的扩展快捷键页面分别为两个操作分配按键。当前设置显示如下。"
+  },
+  "shortcutRight": {
+    "message": "在右侧新标签页打开"
+  },
+  "shortcutSplit": {
+    "message": "在拆分视图打开"
+  },
+  "shortcutNotSet": {
+    "message": "未设置"
+  },
+  "shortcutUnavailable": {
+    "message": "需要 Chrome 155 或更新版本"
+  },
+  "shortcutOpenChrome": {
+    "message": "前往 Chrome 设置快捷键"
+  },
+  "shortcutChromeNote": {
+    "message": "扩展快捷键由 Chrome 管理。点击按钮后，可在打开的页面分别设置或修改两个按键。"
+  },
+  "shortcutOpenFailed": {
+    "message": "请在 Chrome 中打开 chrome://extensions/shortcuts 设置快捷键。"
+  },
+  "shortcutLoadFailed": {
+    "message": "无法读取快捷键设置，请重新打开此页面再试。"
   }
 }

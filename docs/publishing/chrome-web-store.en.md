@@ -48,7 +48,7 @@ Store screenshots must show the real user experience rather than a conceptual mo
 
 Save final screenshots under `store-assets/screenshots/` and commit them. Remove personal tab titles, accounts, bookmarks, and other sensitive information before capture.
 
-During regression testing, temporarily assign the right-side command at `chrome://extensions/shortcuts` and verify that it uses the active tab as its anchor. Keep or clear the shortcut afterward as preferred.
+During regression testing, open the extension settings page and assign both commands at `chrome://extensions/shortcuts`. Verify that the right-side command uses the active tab as its anchor, then verify the Split View command on Chrome 155+.
 
 ## 5. API upload for later releases (optional)
 
@@ -81,7 +81,7 @@ Never commit OAuth client secrets, refresh tokens, access tokens, or extension s
 - [ ] Privacy practices, privacy policy, and actual behavior agree.
 - [ ] The public privacy policy URL works.
 - [ ] Permission justifications cover `clipboardRead`, `contextMenus`, and `offscreen`.
-- [ ] The configurable command has been tested through `chrome://extensions/shortcuts`.
+- [ ] Both configurable commands have been tested on the applicable Chrome versions.
 - [ ] Two-step verification is enabled on the publisher account.
 - [ ] No secrets, tokens, personal data, or unrelated files are included.
 

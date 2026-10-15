@@ -7,7 +7,8 @@
 - `src/background.js`：Manifest V3 Service Worker，维护标签页右键菜单、响应快捷键并创建新标签页。
 - `src/offscreen.html` / `src/offscreen.js`：本地 offscreen 文档，通过 `clipboardRead` 权限读取纯文本剪贴板。
 - `src/url-utils.js`：仅接受完整的 HTTP/HTTPS URL，拒绝其他协议和多行内容。
-- `src/manifest.json`：权限、版本、Service Worker 与图标声明。
+- `src/options.html` / `src/options.js`：显示两个快捷键的当前绑定及 Chrome 设置入口。
+- `src/manifest.json`：权限、版本、Service Worker、快捷键、设置页与图标声明。
 
 ## 数据流
 
@@ -21,6 +22,6 @@
 ## 兼容性
 
 - 基础功能：Chrome 109+。
-- 可配置快捷键：通过 `chrome.commands` 注册，由用户在 `chrome://extensions/shortcuts` 分配。
+- 两项可配置快捷键：通过 `chrome.commands` 注册，由用户在 `chrome://extensions/shortcuts` 分配；插件设置页可读取绑定状态，但 Chrome 不开放修改绑定的扩展 API。
 - 原生拆分视图：Chrome 155+，通过特性检测启用。
 - Chrome 的 `contextMenus` API 不提供菜单显示前事件，因此需要本地轮询来满足“非 URL 时不显示菜单”的交互要求。

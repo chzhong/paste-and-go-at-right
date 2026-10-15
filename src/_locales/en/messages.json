@@ -13,5 +13,41 @@
   },
   "commandOpenRight": {
     "message": "Paste and open the clipboard URL in a new tab to the right"
+  },
+  "commandOpenSplit": {
+    "message": "Paste and open the clipboard URL in Split View"
+  },
+  "openSettings": {
+    "message": "Open Paste and Go at Right settings"
+  },
+  "settingsTitle": {
+    "message": "Keyboard shortcuts"
+  },
+  "settingsIntro": {
+    "message": "Choose a shortcut for each action in Chrome's extension shortcut settings. Your current assignments are shown below."
+  },
+  "shortcutRight": {
+    "message": "Open in a new tab to the right"
+  },
+  "shortcutSplit": {
+    "message": "Open in Split View"
+  },
+  "shortcutNotSet": {
+    "message": "Not assigned"
+  },
+  "shortcutUnavailable": {
+    "message": "Requires Chrome 155 or later"
+  },
+  "shortcutOpenChrome": {
+    "message": "Set shortcuts in Chrome"
+  },
+  "shortcutChromeNote": {
+    "message": "Chrome manages extension shortcuts. Assign or change both keys on the page opened by this button."
+  },
+  "shortcutOpenFailed": {
+    "message": "Open chrome://extensions/shortcuts in Chrome to set your shortcuts."
+  },
+  "shortcutLoadFailed": {
+    "message": "Could not read shortcut assignments. Reopen this page to try again."
   }
 }

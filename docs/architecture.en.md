@@ -7,7 +7,8 @@
 - `src/background.js`: Manifest V3 Service Worker that maintains tab context-menu items, handles keyboard commands, and creates tabs.
 - `src/offscreen.html` / `src/offscreen.js`: local offscreen document that reads the plain-text clipboard with the `clipboardRead` permission.
 - `src/url-utils.js`: accepts complete HTTP/HTTPS URLs and rejects other protocols and multiline content.
-- `src/manifest.json`: permissions, version, localization, Service Worker, homepage, and icon declarations.
+- `src/options.html` / `src/options.js`: shows both shortcut assignments and a link to Chrome's shortcut settings.
+- `src/manifest.json`: permissions, version, localization, Service Worker, commands, options page, homepage, and icon declarations.
 
 ## Data flow
 
@@ -21,6 +22,6 @@ Clipboard text is never persisted, logged, or transmitted over the network.
 ## Compatibility
 
 - Base feature: Chrome 109+.
-- Configurable shortcut: registered through `chrome.commands` and assigned by the user at `chrome://extensions/shortcuts`.
+- Two configurable shortcuts: registered through `chrome.commands` and assigned by the user at `chrome://extensions/shortcuts`. The options page can read assignments, but Chrome does not expose an extension API for changing them.
 - Native Split View: Chrome 155+, enabled through feature detection.
 - Chrome's `contextMenus` API has no before-show event, so local polling is required to keep the menu hidden when the clipboard is not a URL.

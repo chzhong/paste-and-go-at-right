@@ -40,6 +40,12 @@ check(
     "__MSG_commandOpenRight__",
   "缺少可配置的右侧打开快捷键命令"
 );
+check(
+  manifest.commands?.["paste-and-open-split"]?.description ===
+    "__MSG_commandOpenSplit__",
+  "缺少可配置的拆分视图快捷键命令"
+);
+check(manifest.options_page === "options.html", "缺少设置页面");
 
 const expectedPermissions = ["clipboardRead", "contextMenus", "offscreen"];
 check(
@@ -60,7 +66,7 @@ for (const size of [16, 32, 48, 128]) {
   );
 }
 
-for (const file of ["background.js", "offscreen.html", "offscreen.js", "url-utils.js"]) {
+for (const file of ["background.js", "offscreen.html", "offscreen.js", "url-utils.js", "options.html", "options.css", "options.js"]) {
   check(fs.existsSync(path.join(source, file)), `缺少运行文件：${file}`);
 }
 
@@ -73,7 +79,19 @@ for (const locale of ["en", "zh_CN"]) {
     "extensionDescription",
     "menuOpenRight",
     "menuOpenSplit",
-    "commandOpenRight"
+    "commandOpenRight",
+    "commandOpenSplit",
+    "openSettings",
+    "settingsTitle",
+    "settingsIntro",
+    "shortcutRight",
+    "shortcutSplit",
+    "shortcutNotSet",
+    "shortcutUnavailable",
+    "shortcutOpenChrome",
+    "shortcutChromeNote",
+    "shortcutOpenFailed",
+    "shortcutLoadFailed"
   ]) {
     check(messages[key]?.message, `${locale} 缺少消息：${key}`);
   }

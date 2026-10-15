@@ -3,6 +3,7 @@ importScripts("url-utils.js");
 const MENU_OPEN_RIGHT = "paste-and-go-at-right";
 const MENU_OPEN_SPLIT = "paste-and-go-in-split-view";
 const COMMAND_OPEN_RIGHT = "paste-and-open-right";
+const COMMAND_OPEN_SPLIT = "paste-and-open-split";
 const OFFSCREEN_DOCUMENT = "offscreen.html";
 
 let creatingOffscreenDocument = null;
@@ -113,6 +114,10 @@ async function readClipboardText() {
 }
 
 async function openClipboardUrl(tab, openInSplitView = false) {
+  if (openInSplitView && (!supportsSplitView() || typeof tab.id !== "number")) {
+    return;
+  }
+
   const text = await readClipboardText();
   const url = self.normalizeWebUrl(text);
 
@@ -121,11 +126,7 @@ async function openClipboardUrl(tab, openInSplitView = false) {
     return;
   }
 
-  if (
-    openInSplitView &&
-    supportsSplitView() &&
-    typeof tab.id === "number"
-  ) {
+  if (openInSplitView) {
     await chrome.tabs.create({
       url,
       active: true,
@@ -164,7 +165,7 @@ chrome.runtime.onMessage.addListener((message) => {
 });
 
 chrome.commands.onCommand.addListener((command) => {
-  if (command !== COMMAND_OPEN_RIGHT) {
+  if (command !== COMMAND_OPEN_RIGHT && command !== COMMAND_OPEN_SPLIT) {
     return;
   }
 
@@ -172,12 +173,16 @@ chrome.commands.onCommand.addListener((command) => {
     .query({ active: true, currentWindow: true })
     .then(([tab]) => {
       if (tab) {
-        return openClipboardUrl(tab);
+        return openClipboardUrl(tab, command === COMMAND_OPEN_SPLIT);
       }
     })
     .catch((error) => {
       console.error("无法通过快捷键打开剪贴板中的网址：", error);
     });
+});
+
+chrome.action.onClicked.addListener(() => {
+  void chrome.runtime.openOptionsPage();
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
